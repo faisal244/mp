@@ -25,6 +25,20 @@ class VehicleRepository {
   getAll(): Vehicle[] {
     return this._vehicles;
   }
+
+  getByMake(make: string): Vehicle[] {
+    return this._vehicles.filter((vehicle) => vehicle.make.toLowerCase() === make.toLowerCase());
+  }
+
+  getAllGroupedByMake() {
+    return this._vehicles.reduce((acc: { [key: string]: Vehicle[] }, vehicle) => {
+      if (!acc[vehicle.make]) {
+        acc[vehicle.make] = [];
+      }
+      acc[vehicle.make].push(vehicle);
+      return acc;
+    }, {});
+  }
 }
 
 export default VehicleRepository;
