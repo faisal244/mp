@@ -20,6 +20,7 @@ class VehicleRepository {
   constructor() {
     const file = fs.readFileSync("./repositories/vehicles.json", "utf8");
     this._vehicles = JSON.parse(file);
+    console.log(`${this._vehicles.length} vehicles loaded`);
   }
 
   getAll(): Vehicle[] {

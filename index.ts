@@ -61,3 +61,5 @@ app.get("/cars/model/:model?", (req, res) => {
 app.listen(port, () => {
   console.log(`Running at http://localhost:${port}`);
 });
+
+export default app;
