@@ -46,7 +46,7 @@ describe("Vehicle API", () => {
     );
   });
 
-  test("GET /cars/model/:model - Get a list of all Mini Cooper vehicles", async () => {
+  test("GET /cars/model/:model - Get a list of all Mini vehicles that are the Cooper model", async () => {
     const response = await request(app).get("/cars/model/COOPER");
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([{ make: "MINI", model: "COOPER" }]);

@@ -15,7 +15,7 @@
     "fs": "^0.0.1-security",
     "ts-jest": "^29.1.5"
   },
-    "jest": {
+  "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node",
     "transform": {

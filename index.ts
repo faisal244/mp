@@ -8,6 +8,7 @@ const vehicleRepo = new VehicleRepository();
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello World");
+  // res.end();
 });
 
 // Endpoint to list all cars
@@ -57,9 +58,10 @@ app.get("/cars/model/:model?", (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-
-app.listen(port, () => {
-  console.log(`Running at http://localhost:${port}`);
-});
+if (process.env.NODE_ENV !== "test") {
+  app.listen(port, () => {
+    console.log(`Running at http://localhost:${port}`);
+  });
+}
 
 export default app;
