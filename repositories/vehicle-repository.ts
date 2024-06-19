@@ -39,6 +39,20 @@ class VehicleRepository {
       return acc;
     }, {});
   }
+
+  getByModel(model: string): Vehicle[] {
+    return this._vehicles.filter((vehicle) => vehicle.model.toLowerCase() === model.toLowerCase());
+  }
+
+  getAllGroupedByModel() {
+    return this._vehicles.reduce((acc: { [key: string]: Vehicle[] }, vehicle) => {
+      if (!acc[vehicle.model]) {
+        acc[vehicle.model] = [];
+      }
+      acc[vehicle.model].push(vehicle);
+      return acc;
+    }, {});
+  }
 }
 
 export default VehicleRepository;

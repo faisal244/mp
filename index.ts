@@ -39,6 +39,25 @@ app.get("/cars/make/:make?", (req, res) => {
   }
 });
 
+// Endpoint  to list cars by model or all cars grouped by model if no specific model is provided
+app.get("/cars/model/:model?", (req, res) => {
+  const { model } = req.params;
+  try {
+    let vehicles;
+    if (model) {
+      // If a specific model is provided, filter vehicles by that model
+      vehicles = vehicleRepo.getByModel(model);
+    } else {
+      // If no specific model is provided, return all vehicles grouped by model
+      vehicles = vehicleRepo.getAllGroupedByModel();
+    }
+    res.json(vehicles);
+  } catch (error) {
+    console.error("Error processing vehicles:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 app.listen(port, () => {
   console.log(`Running at http://localhost:${port}`);
 });
