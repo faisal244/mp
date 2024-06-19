@@ -5,6 +5,13 @@ export type Vehicle = {
   model: string;
   trim: string;
   colour: string;
+  price: number;
+  co2_level: number;
+  fuel_type: string;
+  transmission: string;
+  engine_size: number;
+  date_first_reg: string;
+  mileage: number;
 };
 
 class VehicleRepository {
